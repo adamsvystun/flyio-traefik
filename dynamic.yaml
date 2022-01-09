@@ -1,0 +1,18 @@
+http:
+  routers:
+    router0:
+      entryPoints:
+      - web
+      - websecure
+      service: service-simple
+      rule: PathPrefix(`/`)
+      tls:
+        certResolver: myresolver
+        domains:
+          - main: "flytest.svit.one"
+
+  services:
+    service-simple:
+      loadBalancer:
+        servers:
+        - url: http://fdaa:0:37ad:a7b:aa0:9d07:f7e0:2:8080

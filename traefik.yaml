@@ -1,0 +1,27 @@
+entryPoints:
+  web:
+    address: ":80"
+  websecure:
+    address: ":443"
+
+log:
+  level: DEBUG
+
+accessLog: {}
+
+api:
+  dashboard: true
+  debug: true
+  insecure: true
+
+providers:
+  file:
+    filename: "/etc/traefik/dynamic.yaml"
+
+certificatesResolvers:
+  myresolver:
+    acme:
+      email: adam.svystun@gmail.com
+      storage: "/etc/traefik/acme.json"
+      httpChallenge:
+        entryPoint: web
